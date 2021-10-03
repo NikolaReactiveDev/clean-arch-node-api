@@ -6,6 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "lint-staged": {
+    "*.js": [
+      "standard --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NikolaReactiveDev/clean-arch-node-api.git"
@@ -16,5 +27,10 @@
   "bugs": {
     "url": "https://github.com/NikolaReactiveDev/clean-arch-node-api/issues"
   },
-  "homepage": "https://github.com/NikolaReactiveDev/clean-arch-node-api#readme"
+  "homepage": "https://github.com/NikolaReactiveDev/clean-arch-node-api#readme",
+  "devDependencies": {
+    "husky": "^4.3.8",
+    "lint-staged": "^9.4.3",
+    "standard": "^14.3.1"
+  }
 }
