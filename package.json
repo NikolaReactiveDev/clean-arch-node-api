@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "lint-staged": {
     "*.js": [
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/NikolaReactiveDev/clean-arch-node-api#readme",
   "devDependencies": {
     "husky": "^4.3.8",
+    "jest": "^27.2.4",
     "lint-staged": "^9.4.3",
     "standard": "^14.3.1"
   }
