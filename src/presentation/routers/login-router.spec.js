@@ -1,5 +1,6 @@
 const LoginRouter = require('./login-router')
 const MissingParamError = require('../helpers/missing-param-error')
+const UnauthorizedError = require('../helpers/unauthorized-error')
 
 /** System under test (SUT) creation with factory pattern */
 const makeSut = () => {
@@ -7,12 +8,13 @@ const makeSut = () => {
     auth (email, password) {
       this.email = email
       this.password = password
+      return this.accessToken
     }
   }
-  const authUseCase = new AuthUseCaseSpy()
-  const sut = new LoginRouter(authUseCase)
+  const authUseCaseSpy = new AuthUseCaseSpy()
+  const sut = new LoginRouter(authUseCaseSpy)
   return {
-    authUseCase,
+    authUseCaseSpy,
     sut
   }
 }
@@ -58,7 +60,7 @@ describe('Login Router', () => {
   })
 
   test('should call AuthUseCase with correct params', () => {
-    const { sut, authUseCase } = makeSut()
+    const { sut, authUseCaseSpy } = makeSut()
     const httpRequest = {
       // correct request email&password provided
       body: {
@@ -67,7 +69,60 @@ describe('Login Router', () => {
       }
     }
     sut.route(httpRequest)
-    expect(authUseCase.email).toBe(httpRequest.body.email)
-    expect(authUseCase.password).toBe(httpRequest.body.password)
+    expect(authUseCaseSpy.email).toBe(httpRequest.body.email)
+    expect(authUseCaseSpy.password).toBe(httpRequest.body.password)
+  })
+
+  test('should return 401 when invalid credentials are provided', () => {
+    const { sut, authUseCaseSpy } = makeSut()
+    authUseCaseSpy.accessToken = null
+    const httpRequest = {
+      // invalid credentials provided
+      body: {
+        email: 'invalid_email@gmail.com',
+        password: 'invalid_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+    expect(httpResponse.statusCode).toBe(401)
+    expect(httpResponse.body).toEqual(new UnauthorizedError())
+  })
+
+  test('should return 200 when valid credentials are provided', () => {
+    const { sut, authUseCaseSpy } = makeSut()
+    authUseCaseSpy.accessToken = 'any_token'
+    const httpRequest = {
+      // valid credentials provided
+      body: {
+        email: 'valid_email@gmail.com',
+        password: 'valid_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+    expect(httpResponse.statusCode).toBe(200)
+  })
+
+  test('should return 500 if no AuthUseCase is provided', () => {
+    const sut = new LoginRouter()
+    const httpRequest = {
+      body: {
+        email: 'any_email@gmail.com',
+        password: 'any_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+  })
+
+  test('should return 500 if AuthUseCase provided has no auth method', () => {
+    const sut = new LoginRouter({})// empty authUseCase object provided
+    const httpRequest = {
+      body: {
+        email: 'any_email@gmail.com',
+        password: 'any_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
   })
 })
