@@ -5,6 +5,15 @@ const ServerError = require('../helpers/server-error')
 
 /** System under test (SUT) creation with factory pattern */
 const makeSut = () => {
+  const authUseCaseSpy = makeAuthUseCase()
+  const sut = new LoginRouter(authUseCaseSpy)
+  return {
+    authUseCaseSpy,
+    sut
+  }
+}
+
+const makeAuthUseCase = () => {
   class AuthUseCaseSpy {
     auth (email, password) {
       this.email = email
@@ -12,12 +21,16 @@ const makeSut = () => {
       return this.accessToken
     }
   }
-  const authUseCaseSpy = new AuthUseCaseSpy()
-  const sut = new LoginRouter(authUseCaseSpy)
-  return {
-    authUseCaseSpy,
-    sut
+  return new AuthUseCaseSpy()
+}
+
+const makeAuthUseCaseWithError = () => {
+  class AuthUseCaseSpy {
+    auth () {
+      throw new Error('AuthUseCase Error')
+    }
   }
+  return new AuthUseCaseSpy()
 }
 
 describe('Login Router', () => {
@@ -121,6 +134,20 @@ describe('Login Router', () => {
 
   test('should return 500 if AuthUseCase provided has no auth method', () => {
     const sut = new LoginRouter({})// empty authUseCase object provided
+    const httpRequest = {
+      body: {
+        email: 'any_email@gmail.com',
+        password: 'any_password'
+      }
+    }
+    const httpResponse = sut.route(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
+  })
+
+  test('should return 500 if AuthUseCase throws', () => {
+    const authUseCaseSpy = makeAuthUseCaseWithError()
+    const sut = new LoginRouter(authUseCaseSpy)// throwing authUseCase object provided
     const httpRequest = {
       body: {
         email: 'any_email@gmail.com',
