@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1634369022985" clover="3.2.0">
-  <project timestamp="1634369022985" name="All files">
-    <metrics statements="68" coveredstatements="68" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8" elements="76" coveredelements="76" complexity="0" loc="68" ncloc="68" packages="2" files="4" classes="4"/>
+<coverage generated="1634459622238" clover="3.2.0">
+  <project timestamp="1634459622238" name="All files">
+    <metrics statements="79" coveredstatements="79" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9" elements="88" coveredelements="88" complexity="0" loc="79" ncloc="79" packages="2" files="5" classes="5"/>
     <package name="helpers">
-      <metrics statements="42" coveredstatements="42" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <metrics statements="53" coveredstatements="53" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
       <file name="http-response.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\presentation\helpers\http-response.js">
-        <metrics statements="30" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <metrics statements="35" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
         <line num="15" count="4" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="21" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
       </file>
       <file name="missing-param-error.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\presentation\helpers\missing-param-error.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -44,6 +49,15 @@
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="server-error.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\presentation\helpers\server-error.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
       <file name="unauthorized-error.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\presentation\helpers\unauthorized-error.js">
