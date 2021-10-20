@@ -22,4 +22,12 @@ describe('Email Validator', () => {
     const isEmailValid = sut.isValid('invalid_email.com')
     expect(isEmailValid).toBe(false)
   })
+
+  test('should call validator with correct email', () => {
+    const sut = makeSut()
+    validator.isEmail = jest.fn()
+    const providedEmail = 'some_email@gmail.com'
+    sut.isValid(providedEmail)
+    expect(validator.isEmail).toBeCalledWith(providedEmail)
+  })
 })
