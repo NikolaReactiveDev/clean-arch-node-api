@@ -4,7 +4,7 @@ const {
   InvalidParamError,
   ServerError,
   UnauthorizedError
-} = require('../errors')
+} = require('../../utils/errors')
 
 /** System under test (SUT) creation with factory pattern */
 const makeSut = () => {
