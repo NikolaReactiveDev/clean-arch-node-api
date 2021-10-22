@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1634769557988" clover="3.2.0">
-  <project timestamp="1634769557988" name="All files">
-    <metrics statements="106" coveredstatements="106" conditionals="20" coveredconditionals="20" methods="11" coveredmethods="11" elements="137" coveredelements="137" complexity="0" loc="106" ncloc="106" packages="4" files="8" classes="8"/>
+<coverage generated="1634931745002" clover="3.2.0">
+  <project timestamp="1634931745002" name="All files">
+    <metrics statements="125" coveredstatements="125" conditionals="30" coveredconditionals="30" methods="13" coveredmethods="13" elements="168" coveredelements="168" complexity="0" loc="125" ncloc="125" packages="5" files="9" classes="9"/>
+    <package name="domain.usecases">
+      <metrics statements="19" coveredstatements="19" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <file name="auth-usecase.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\domain\usecases\auth-usecase.js">
+        <metrics statements="19" coveredstatements="19" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="presentation.helpers">
       <metrics statements="33" coveredstatements="33" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
       <file name="http-response.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\presentation\helpers\http-response.js">
@@ -111,18 +136,18 @@
         <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
       <file name="missing-param-error.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\utils\errors\missing-param-error.js">
         <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="10" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
       <file name="server-error.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\utils\errors\server-error.js">
