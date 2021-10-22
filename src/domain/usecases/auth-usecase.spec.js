@@ -3,9 +3,12 @@ const { MissingParamError, InvalidParamError } = require('../../utils/errors')
 
 const makeSut = () => {
   class LoadUserByEmailRepository {
-    async load (email) {}
+    async load (email) {
+      return this.user
+    }
   }
   const loadUserByEmailRepository = new LoadUserByEmailRepository()
+  loadUserByEmailRepository.user = {}
   const sut = new AuthUseCase(loadUserByEmailRepository)
   return {
     sut,
@@ -52,6 +55,21 @@ describe('Auth UseCase', () => {
     const { sut, loadUserByEmailRepository } = makeSut()
     loadUserByEmailRepository.load = jest.fn(() => null)
     const provided = { email: 'invalid_email@gmail.com', password: 'invalid_password' }
+    const result = await sut.auth(provided.email, provided.password)
+    expect(result).toBeNull()
+  })
+
+  test('should return null if invalid email is provided', async () => {
+    const { sut, loadUserByEmailRepository } = makeSut()
+    loadUserByEmailRepository.user = null
+    const provided = { email: 'invalid_email@gmail.com', password: 'valid_password' }
+    const result = await sut.auth(provided.email, provided.password)
+    expect(result).toBeNull()
+  })
+
+  test('should return null if invalid password is provided', async () => {
+    const { sut } = makeSut()
+    const provided = { email: 'valid_email@gmail.com', password: 'invalid_password' }
     const result = await sut.auth(provided.email, provided.password)
     expect(result).toBeNull()
   })
