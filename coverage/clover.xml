@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1634942851636" clover="3.2.0">
-  <project timestamp="1634942851636" name="All files">
-    <metrics statements="128" coveredstatements="128" conditionals="32" coveredconditionals="32" methods="13" coveredmethods="13" elements="173" coveredelements="173" complexity="0" loc="128" ncloc="128" packages="5" files="9" classes="9"/>
+<coverage generated="1634943410422" clover="3.2.0">
+  <project timestamp="1634943410422" name="All files">
+    <metrics statements="130" coveredstatements="127" conditionals="33" coveredconditionals="32" methods="13" coveredmethods="13" elements="176" coveredelements="172" complexity="0" loc="130" ncloc="130" packages="5" files="9" classes="9"/>
     <package name="domain.usecases">
-      <metrics statements="22" coveredstatements="22" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>
+      <metrics statements="24" coveredstatements="21" conditionals="13" coveredconditionals="12" methods="2" coveredmethods="2"/>
       <file name="auth-usecase.js" path="C:\Users\Development\Desktop\Vezbanje\clean-arch-node-api\src\domain\usecases\auth-usecase.js">
-        <metrics statements="22" coveredstatements="22" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>
+        <metrics statements="24" coveredstatements="21" conditionals="13" coveredconditionals="12" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -25,9 +25,11 @@
         <line num="17" count="5" type="stmt"/>
         <line num="18" count="9" type="cond" truecount="2" falsecount="0"/>
         <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="20" count="9" type="cond" truecount="0" falsecount="1"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
     <package name="presentation.helpers">
