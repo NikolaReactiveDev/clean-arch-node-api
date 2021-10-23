@@ -1,6 +1,16 @@
 const AuthUseCase = require('./auth-usecase')
 const { MissingParamError, InvalidParamError } = require('../../utils/errors')
 
+const makeTokenGenerator = () => {
+  class TokenGenerator {
+    async generate (userId) {
+
+    }
+  }
+  const tokenGenerator = new TokenGenerator()
+  tokenGenerator.accessToken = 'any_token'
+  return tokenGenerator
+}
 const makeEncrypter = () => {
   class EncrypterSpy {
     async compare (password, hashedPassword) {
@@ -25,13 +35,15 @@ const makeLoadUserByEmailRepository = () => {
   return loadUserByEmailRepository
 }
 const makeSut = () => {
+  const tokenGenerator = makeTokenGenerator()
   const encrypter = makeEncrypter()
   const loadUserByEmailRepository = makeLoadUserByEmailRepository()
-  const sut = new AuthUseCase(loadUserByEmailRepository, encrypter)
+  const sut = new AuthUseCase(loadUserByEmailRepository, encrypter, tokenGenerator)
   return {
     sut,
     loadUserByEmailRepository,
-    encrypter
+    encrypter,
+    tokenGenerator
   }
 }
 
@@ -101,5 +113,14 @@ describe('Auth UseCase', () => {
     const provided = { email: 'any_email@gmail.com', password: 'any_password' }
     await sut.auth(provided.email, provided.password)
     expect(encrypter.compare).toBeCalledWith(provided.password, loadUserByEmailRepository.user.password)
+  })
+
+  test('should call TokenGenerator with correct userId', async () => {
+    const { sut, loadUserByEmailRepository, tokenGenerator } = makeSut()
+    tokenGenerator.generate = jest.fn()
+    loadUserByEmailRepository.user = { id: 'uuidv4', password: 'hashed_password' }
+    const provided = { email: 'any_email@gmail.com', password: 'any_password' }
+    await sut.auth(provided.email, provided.password)
+    expect(tokenGenerator.generate).toBeCalledWith(loadUserByEmailRepository.user.id)
   })
 })
