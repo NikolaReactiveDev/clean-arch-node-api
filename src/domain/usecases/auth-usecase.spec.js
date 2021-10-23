@@ -4,7 +4,7 @@ const { MissingParamError, InvalidParamError } = require('../../utils/errors')
 const makeTokenGenerator = () => {
   class TokenGenerator {
     async generate (userId) {
-
+      return this.accessToken
     }
   }
   const tokenGenerator = new TokenGenerator()
@@ -122,5 +122,13 @@ describe('Auth UseCase', () => {
     const provided = { email: 'any_email@gmail.com', password: 'any_password' }
     await sut.auth(provided.email, provided.password)
     expect(tokenGenerator.generate).toBeCalledWith(loadUserByEmailRepository.user.id)
+  })
+
+  test('should return an accessToken if correct credentials are provided', async () => {
+    const { sut, tokenGenerator } = makeSut()
+    const provided = { email: 'valid_email@gmail.com', password: 'valid_password' }
+    const accessToken = await sut.auth(provided.email, provided.password)
+    expect(accessToken).toBe(tokenGenerator.accessToken)
+    expect(accessToken).toBeTruthy()
   })
 })
