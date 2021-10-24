@@ -7,22 +7,26 @@ class Encrypter {
   }
 }
 
+const makeSut = () => {
+  return new Encrypter()
+}
+
 describe('Encrypter', () => {
   test('should retrun true if bcrypt returns true', async () => {
-    const sut = new Encrypter()
+    const sut = makeSut()
     const isValid = await sut.compare('any_password', 'hashed_password')
     expect(isValid).toBe(true)
   })
 
   test('should retrun false if bcrypt returns false', async () => {
-    const sut = new Encrypter()
+    const sut = makeSut()
     bcrypt.isValid = false
     const isValid = await sut.compare('any_password', 'hashed_password')
     expect(isValid).toBe(false)
   })
 
   test('should call bcrypt with correct values', async () => {
-    const sut = new Encrypter()
+    const sut = makeSut()
     bcrypt.compare = jest.fn()
     await sut.compare('any_password', 'hashed_password')
     expect(bcrypt.compare).toBeCalledWith('any_password', 'hashed_password')
