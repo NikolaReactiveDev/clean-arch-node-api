@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const MissingParamError = require('../errors/missing-param-error')
 const Encrypter = require('./encrypter')
 
 const makeSut = () => {
@@ -24,5 +25,11 @@ describe('Encrypter', () => {
     bcrypt.compare = jest.fn()
     await sut.compare('any_password', 'hashed_password')
     expect(bcrypt.compare).toBeCalledWith('any_password', 'hashed_password')
+  })
+
+  test('should throw if no params are provided', async () => {
+    const sut = makeSut()
+    expect(sut.compare()).rejects.toThrow(new MissingParamError('value'))
+    expect(sut.compare('any_password')).rejects.toThrow(new MissingParamError('hashedValue'))
   })
 })
