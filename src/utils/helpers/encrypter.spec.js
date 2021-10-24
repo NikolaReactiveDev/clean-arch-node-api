@@ -20,4 +20,11 @@ describe('Encrypter', () => {
     const isValid = await sut.compare('any_password', 'hashed_password')
     expect(isValid).toBe(false)
   })
+
+  test('should call bcrypt with correct values', async () => {
+    const sut = new Encrypter()
+    bcrypt.compare = jest.fn()
+    await sut.compare('any_password', 'hashed_password')
+    expect(bcrypt.compare).toBeCalledWith('any_password', 'hashed_password')
+  })
 })
