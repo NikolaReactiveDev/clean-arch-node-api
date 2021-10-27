@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --silent --colors --noStackTrace --passWithNoTests",
-    "test:unit": "npm test -- --watchAll -c jest-unit-config.js",
+    "test:unit": "npm test -- --watchAll --detectOpenHandles -c jest-unit-config.js",
     "test:integration": "npm test -- --watchAll -c jest-integration-config.js",
-    "test:staged": "npm test -- --findRelatedTests",
+    "test:staged": "npm test -- --detectOpenHandles --findRelatedTests",
     "test:ci": "npm test -- --coverage"
   },
   "standard": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/NikolaReactiveDev/clean-arch-node-api#readme",
   "devDependencies": {
+    "@shelf/jest-mongodb": "^2.1.0",
     "husky": "^4.3.8",
     "jest": "^27.2.4",
     "lint-staged": "^9.4.3",
@@ -35,6 +36,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.3",
     "validator": "^13.6.0"
   }
 }
