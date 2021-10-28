@@ -40,4 +40,10 @@ describe('LoadUserByEmail Repository', () => {
     const user = await sut.load('valid_email@gmail.com')
     expect(user.email).toBe('valid_email@gmail.com')
   })
+
+  test('should throw if no userModel is provided', () => {
+    const sut = new LoadUserByEmailRepository()
+    const promise = sut.load('any_email@gmail.com')
+    expect(promise).rejects.toThrow()
+  })
 })
